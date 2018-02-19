@@ -1,11 +1,16 @@
 (ns fchallenge.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.middleware.json :refer [wrap-json-response]]
+            [ring.util.response :refer [response]]
+            [fchallenge.search :refer [bing-search]]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/search" {{:keys [query]} :params} (response (bing-search query)))
   (route/not-found "Not Found"))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (-> app-routes
+      wrap-json-response
+      (wrap-defaults site-defaults)))
