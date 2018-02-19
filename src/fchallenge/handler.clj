@@ -12,5 +12,5 @@
 
 (def app
   (-> app-routes
-      wrap-json-response
+      (wrap-json-response {:pretty true})
       (wrap-defaults site-defaults)))
