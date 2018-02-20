@@ -12,4 +12,5 @@
                         [ring/ring-mock "0.3.0"]
                         [clj-http "3.7.0"]
                         [ring/ring-json "0.4.0"]
-                        [org.clojars.scsibug/feedparser-clj "0.4.0"]]}})
+                        [org.clojars.scsibug/feedparser-clj "0.4.0"]
+                        [com.google.guava/guava "22.0"]]}})
