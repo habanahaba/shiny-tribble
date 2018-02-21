@@ -27,7 +27,7 @@
      executor)))
 
 (defn create []
-  (let [handle {:thread-pool (new-thread-pool) :conn-mgr nil}]
+  (let [handle {:thread-pool (new-thread-pool)}]
     ; Abhorrent. Unfortunately, no other obvious way to do it better for now (component? mount?)
     (.addShutdownHook (Runtime/getRuntime) (Thread. (fn [] (destroy handle) )))
     handle))
